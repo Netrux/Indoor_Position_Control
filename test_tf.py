@@ -24,6 +24,23 @@ def callback(data):
     rot_z = data.transforms[0].transform.rotation.z
     rot_w = data.transforms[0].transform.rotation.w
 
+def quaternion_to_euler(x, y, z, w):
+
+    t0 = +2.0 * (w * x + y * z)
+    t1 = +1.0 - 2.0 * (x * x + y * y)
+    X = math.degrees(math.atan2(t0, t1))
+
+    t2 = +2.0 * (w * y - z * x)
+    t2 = +1.0 if t2 > +1.0 else t2
+    t2 = -1.0 if t2 < -1.0 else t2
+    Y = math.degrees(math.asin(t2))
+
+    t3 = +2.0 * (w * z + x * y)
+    t4 = +1.0 - 2.0 * (y * y + z * z)
+    Z = math.degrees(math.atan2(t3, t4))
+
+    return X, Y, Z
+    
 def listener():
 
     rospy.init_node('listener',anonymous=True)
@@ -43,4 +60,5 @@ if __name__ == '__main__':
         print("rot_Y:",rot_y)
         print("rot_Z:",rot_z)
         print("rot_W:",rot_w)
+        rot_x,rot_y,rot_z =  quaternion_to_euler(rot_x,rot_y,rot_z,rot_w)
     rospy.spin()
