@@ -44,7 +44,7 @@ def quaternion_to_euler(x, y, z, w):
 def listener():
 
     rospy.init_node('listener',anonymous=True)
-    rospy.Subscriber("/tf",tf2_msgs.msg.TFMessage,callback)
+    rospy.Subscriber("/tf",tf2_msgs.msg.TFMessage,callback,queue_size=2)
     return [trans_x,trans_y,trans_z]
 
 if __name__ == '__main__':
