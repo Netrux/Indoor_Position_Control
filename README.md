@@ -20,4 +20,4 @@ This could be used in excavation sites for mapping an indoor, warehouse manageme
 2. Install ROS from [here](http://wiki.ros.org/ROS/Installation), Mavros from [here](https://dev.px4.io/v1.9.0/en/ros/mavros_installation.html).
 3. Install Intel Realsense SDK from [here](https://github.com/IntelRealSense/librealsense). SDK is developed for Jetson Nano which uses its CUDA cores
 to enhance performance and software FPS of the cameras.
-4. 
+
